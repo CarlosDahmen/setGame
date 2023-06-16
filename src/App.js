@@ -8,7 +8,10 @@ function App() {
       <div className="App">
         <Gameboard />
         <div className="game-info">
-          <div className="scoreboard">LEADERBOARD</div>
+          <div className="scoreboard-container">
+            <h2>LEADERBOARD</h2>
+            <section className="scoreboard"></section>
+          </div>
           <button className="set-btn">SET</button>
         </div>
       </div>

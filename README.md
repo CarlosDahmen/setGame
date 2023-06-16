@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+### Modeling Data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+deck: [card, card, card]
 
-## Available Scripts
 
-In the project directory, you can run:
+card: {
+  id: "0",
+  imageUrl: require("../public/images/0.png"),
+  color: red,
+  fill: solid,    //solid | empty | striped
+  shape: pill,
+  quantity: 3  // 1, | 2 | 3
+}
+```
 
-### `npm start`
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+userSelectedCards: []
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+cards: [
+  {
+    id: 1,
+    color: red,
+    shape: peanut,
+    fill: solid,
+    quantity: 1
+    imageUrl: require("../public/images/1.png"),
+  },
+  {
+    id: 2,
+    color: red,
+    shape: peanut,
+    fill: solid,
+    quantity: 2
+    imageUrl: require("../public/images/2.png"),
+  },
+  {
+    id: 3,
+    color: red,
+    shape: peanut,
+    fill: solid,
+    quantity: 3
+    imageUrl: require("../public/images/3.png"),
+  }]
 
-### `npm test`
+// all shapes need to be equal, or all shapes need to be different
+// all colors need to be equal, or all colors need to be different
+// all fills need to be equal, or all fills need to be different
+// all quantities need to be equal, or all quantities need to be different
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+utitl funcs
+//
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const allFillsAreEqual = (card1, card2, card3) => {
+  return card1.fill === card2.fill === card2.fill
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const allFillsAreDifferent = (card1, card2, card3) => {
+  return (card1.fill !== card2.fill) && (card2.fill  !==card3.fill)
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+if(allFillsAreEqual(selCard[0], selCard[1], selCard[2]) ||
+  deck[0].fill !== deck[1].fill && deck[1].fill !== deck[2].fill)
 
-### `npm run eject`
+deck = [[one, red, peanut, solid],[two, red, peanut, solid],[three, red, peanut, solid]]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  if(deck[0][0] === deck[1][0] === deck[2][0] )
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
