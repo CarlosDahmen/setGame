@@ -1,0 +1,16 @@
+.gameboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+}
+
+.card {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.selectedCard {
+  border-style: solid;
+  border-width: 3px;
+  border-color: yellow;
+}

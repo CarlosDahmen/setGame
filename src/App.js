@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Gameboard from "./components/Gameboard.tsx";
+import { GameContextProvider } from "./context/GameLogic";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GameContextProvider>
+      <div className="App">
+        <Gameboard />
+        <div className="game-info">
+          <div className="scoreboard">LEADERBOARD</div>
+          <button className="set-btn">SET</button>
+        </div>
+      </div>
+    </GameContextProvider>
   );
 }
 
