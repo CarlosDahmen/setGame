@@ -7,7 +7,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
-    imageUrl: "../../public/images/cards/1.gif",
   },
   {
     id: 2,
@@ -15,7 +14,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
-    imageUrl: "../../public/images/cards/2.gif",
   },
   {
     id: 3,
@@ -23,7 +21,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
-    imageUrl: "../../public/images/cards/3.gif",
   },
   {
     id: 4,
@@ -31,7 +28,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
-    imageUrl: "../../public/images/cards/4.gif",
   },
   {
     id: 5,
@@ -39,7 +35,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
-    imageUrl: "../../public/images/cards/5.gif",
   },
   {
     id: 6,
@@ -47,7 +42,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
-    imageUrl: "../../public/images/cards/6.gif",
   },
   {
     id: 7,
@@ -55,7 +49,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
-    imageUrl: "../../public/images/cards/7.gif",
   },
   {
     id: 8,
@@ -63,7 +56,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
-    imageUrl: "../../public/images/cards/8.gif",
   },
   {
     id: 9,
@@ -71,7 +63,6 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
-    imageUrl: "../../public/images/cards/9.gif",
   },
   {
     id: 10,
@@ -79,7 +70,6 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 1,
-    imageUrl: "../../public/images/cards/10.gif",
   },
   {
     id: 11,
@@ -87,7 +77,6 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 2,
-    imageUrl: "../../public/images/cards/11.gif",
   },
   {
     id: 12,
@@ -95,6 +84,5 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 3,
-    imageUrl: "../../public/images/cards/12.gif",
   },
 ];

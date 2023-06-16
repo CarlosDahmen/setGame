@@ -4,5 +4,4 @@ export interface Card {
   shape: string;
   fill: string;
   quantity: number;
-  imageUrl: string;
 }
