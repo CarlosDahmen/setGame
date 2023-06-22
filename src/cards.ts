@@ -7,6 +7,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
+    selected: false,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
+    selected: false,
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
+    selected: false,
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
+    selected: false,
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
+    selected: false,
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
+    selected: false,
   },
   {
     id: 7,
@@ -49,6 +55,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
+    selected: false,
   },
   {
     id: 8,
@@ -56,6 +63,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
+    selected: false,
   },
   {
     id: 9,
@@ -63,6 +71,7 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
+    selected: false,
   },
   {
     id: 10,
@@ -70,6 +79,7 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 1,
+    selected: false,
   },
   {
     id: 11,
@@ -77,6 +87,7 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 2,
+    selected: false,
   },
   {
     id: 12,
@@ -84,5 +95,6 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 3,
+    selected: false,
   },
 ];

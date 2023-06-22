@@ -4,4 +4,6 @@ export interface Card {
   shape: string;
   fill: string;
   quantity: number;
+  selected: boolean;
+  set?: boolean;
 }
