@@ -3,10 +3,10 @@ import { Card } from "../types/Card";
 
 const randNum = () => Math.ceil(12 * Math.random());
 
-const randCard = () => {
-  const randIdx = randNum();
-  return cards[randIdx];
-};
+// const randCard = () => {
+//   const randIdx = randNum();
+//   return cards[randIdx];
+// };
 
 export const initDeck = () => {
   let newDeck: number[] = [];
@@ -52,27 +52,35 @@ export const checkSet = (selectedCards: Card[]) => {
   return true;
 };
 
+export const notASet = (selectedCards: Card[]) => {};
+
 /**
  *
  * If the 3 selected cards are a set, updateDeck removes those cards
  * and adds 3 new random cards not currently in the deck
  */
-export const updateDeck = (deck: Card[], selectedCards: Card[]) => {
-  selectedCards.forEach((selectedCard) => {
-    const selectedCardId = selectedCard.id;
+export const updateDeck = (deck: Card[]) => {
+  // selectedCards.forEach((selectedCard) => {
+  //   const selectedCardId = selectedCard.id;
 
-    const idxInDeck = deck.filter((card) => card.id === selectedCardId)[0].id;
+  //   const idxInDeck = deck.filter((card, idx) => {
+  //     if (card.id === selectedCardId) {
+  //       return idx;
+  //     }
+  //   })[0]?.id;
 
-    let newCard = undefined;
+  //   console.log(selectedCardId, idxInDeck);
 
-    while (newCard === undefined) {
-      let newIdx = randNum();
+  //   let newCard = undefined;
 
-      if (!deck.some((deckCard) => deckCard.id === newIdx)) {
-        newCard = cards[newIdx - 1];
-        deck[idxInDeck] = newCard;
-      }
-    }
-  });
+  //   while (newCard === undefined) {
+  //     let newIdx = randNum();
+
+  //     if (!deck.some((deckCard) => deckCard.id === newIdx)) {
+  //       newCard = cards[newIdx - 1];
+  //       deck[idxInDeck] = newCard;
+  //     }
+  //   }
+  // });
   return deck;
 };
