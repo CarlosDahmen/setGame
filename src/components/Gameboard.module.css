@@ -14,3 +14,15 @@
   border-width: 3px;
   border-color: yellow;
 }
+
+.isPartSet {
+  border-style: solid;
+  border-width: 3px;
+  border-color: green;
+}
+
+.isNotPartSet {
+  border-style: solid;
+  border-width: 3px;
+  border-color: red;
+}

@@ -37,10 +37,29 @@ export const GameContextProvider = ({ children }: any) => {
     const selectedCards = deck.filter((card) => card.selected === true);
     if (selectedCards.length === 3) {
       if (checkSet(selectedCards)) {
-        setDeck(updateDeck(deck));
+        setTimeout(() => {
+          setDeck(updateDeck(deck));
+        }, 1000);
+      } else {
+        let newDeck = [...deck];
+        newDeck.forEach((card) => {
+          card.selected = false;
+        });
+        setDeck(newDeck);
       }
+      // resetSelectedCards(deck);
     }
   }, [deck]);
+
+  // const resetSelectedCards = (deck: Card[]) => {
+  //   setTimeout(() => {
+  //     let newDeck = [...deck];
+  //     newDeck.forEach((card) => {
+  //       card.selected = false;
+  //     });
+  //     setDeck(newDeck);
+  //   }, 1000);
+  // };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };

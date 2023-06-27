@@ -30,11 +30,24 @@ export default function Gameboard() {
       {deck.length &&
         deck.map((card, idx) => {
           const imageUrl = require(`../../public/images/cards/${card.id}.gif`);
+
+          const cardStyles = (card: Card) => {
+            if (card.selected) {
+              return styles.selectedCard;
+            }
+
+            if (card.selected && card.set) {
+              return styles.isPartSet;
+            }
+
+            if (card.selected && !card.set) {
+              return styles.isNotPartSet;
+            }
+            return "";
+          };
           return (
             <img
-              className={`${styles.card} ${
-                card.selected ? styles.selectedCard : ""
-              }`}
+              className={`${styles.card} ${cardStyles(card)}`}
               src={imageUrl}
               width={258}
               height={167}

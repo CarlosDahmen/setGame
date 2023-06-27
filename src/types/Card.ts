@@ -5,5 +5,5 @@ export interface Card {
   fill: string;
   quantity: number;
   selected: boolean;
-  set?: boolean;
+  set: boolean | null;
 }

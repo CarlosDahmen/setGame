@@ -1,7 +1,9 @@
 import { cards } from "../cards";
 import { Card } from "../types/Card";
+import findIndex from "lodash.findindex";
+import isEqual from "lodash.isequal";
 
-const randNum = () => Math.ceil(12 * Math.random());
+const randNum = () => Math.ceil(15 * Math.random());
 
 // const randCard = () => {
 //   const randIdx = randNum();
@@ -24,6 +26,10 @@ export const initDeck = () => {
   });
 };
 
+const cardInDeck = (deck: Card[], cardId: number) => {
+  return findIndex(deck, { id: cardId }) === -1 ? false : true;
+};
+
 export let deck = initDeck();
 
 export const newCard = (existingDeck: number[]) => {
@@ -39,48 +45,61 @@ export const newCard = (existingDeck: number[]) => {
 };
 
 export const checkSet = (selectedCards: Card[]) => {
-  /* hash = {
-    1 => [one, red, peanut, solid]
-    2 => [two, red, peanut, solid]
-    3 => [three, red, peanut, solid]
+  let card1 = selectedCards[0];
+  let card2 = selectedCards[1];
+  let card3 = selectedCards[2];
+
+  if (
+    ((isEqual(card1.color, card2.color) && isEqual(card2.color, card3.color)) ||
+      (!isEqual(card1.color, card2.color) &&
+        !isEqual(card2.color, card3.color) &&
+        !isEqual(card1.color, card3.color))) &&
+    ((isEqual(card1.shape, card2.shape) && isEqual(card2.shape, card3.shape)) ||
+      (!isEqual(card1.shape, card2.shape) &&
+        !isEqual(card2.shape, card3.shape) &&
+        !isEqual(card1.shape, card3.shape))) &&
+    ((isEqual(card1.fill, card2.fill) && isEqual(card2.fill, card3.fill)) ||
+      (!isEqual(card1.fill, card2.fill) &&
+        !isEqual(card2.fill, card3.fill) &&
+        !isEqual(card1.fill, card3.fill))) &&
+    ((isEqual(card1.quantity, card2.quantity) &&
+      isEqual(card2.quantity, card3.quantity)) ||
+      (!isEqual(card1.quantity, card2.quantity) &&
+        !isEqual(card2.quantity, card3.quantity) &&
+        !isEqual(card1.quantity, card3.quantity)))
+  ) {
+    return true;
+  } else {
+    return false;
   }
-
-    hash.get(card)
-
-  */
-  console.log("CHECKED!");
-  return true;
 };
 
 export const notASet = (selectedCards: Card[]) => {};
 
 /**
- *
  * If the 3 selected cards are a set, updateDeck removes those cards
  * and adds 3 new random cards not currently in the deck
  */
 export const updateDeck = (deck: Card[]) => {
-  // selectedCards.forEach((selectedCard) => {
-  //   const selectedCardId = selectedCard.id;
+  const selectedCards = deck.filter((card) => card.selected === true);
 
-  //   const idxInDeck = deck.filter((card, idx) => {
-  //     if (card.id === selectedCardId) {
-  //       return idx;
-  //     }
-  //   })[0]?.id;
+  let newCardIds: number[] = [];
+  let newDeck = [...deck];
+  selectedCards.forEach((card) => {
+    const selectedCardIdx: number = findIndex(newDeck, { id: card.id });
 
-  //   console.log(selectedCardId, idxInDeck);
+    let newCard = undefined;
 
-  //   let newCard = undefined;
+    while (newCard === undefined) {
+      let newIdx = randNum();
 
-  //   while (newCard === undefined) {
-  //     let newIdx = randNum();
-
-  //     if (!deck.some((deckCard) => deckCard.id === newIdx)) {
-  //       newCard = cards[newIdx - 1];
-  //       deck[idxInDeck] = newCard;
-  //     }
-  //   }
-  // });
-  return deck;
+      if (!cardInDeck(deck, newIdx) && !newCardIds.includes(newIdx)) {
+        newCardIds.push(newIdx);
+        newCard = cards[newIdx - 1];
+        newDeck[selectedCardIdx] = newCard;
+      }
+    }
+  });
+  deck.forEach((card) => (card.selected = false));
+  return newDeck;
 };

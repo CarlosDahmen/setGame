@@ -11,6 +11,7 @@
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "lodash.findindex": "^4.6.0",
+    "lodash.isequal": "^4.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash.findindex": "^4.6.7"
+    "@types/lodash.findindex": "^4.6.7",
+    "@types/lodash.isequal": "^4.5.6"
   }
 }
