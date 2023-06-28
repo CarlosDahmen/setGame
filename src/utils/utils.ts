@@ -5,11 +5,6 @@ import isEqual from "lodash.isequal";
 
 const randNum = () => Math.ceil(15 * Math.random());
 
-// const randCard = () => {
-//   const randIdx = randNum();
-//   return cards[randIdx];
-// };
-
 export const initDeck = () => {
   let newDeck: number[] = [];
 
@@ -26,7 +21,7 @@ export const initDeck = () => {
   });
 };
 
-const cardInDeck = (deck: Card[], cardId: number) => {
+const isCardInDeck = (deck: Card[], cardId: number) => {
   return findIndex(deck, { id: cardId }) === -1 ? false : true;
 };
 
@@ -74,8 +69,6 @@ export const checkSet = (selectedCards: Card[]) => {
   }
 };
 
-export const notASet = (selectedCards: Card[]) => {};
-
 /**
  * If the 3 selected cards are a set, updateDeck removes those cards
  * and adds 3 new random cards not currently in the deck
@@ -93,7 +86,7 @@ export const updateDeck = (deck: Card[]) => {
     while (newCard === undefined) {
       let newIdx = randNum();
 
-      if (!cardInDeck(deck, newIdx) && !newCardIds.includes(newIdx)) {
+      if (!isCardInDeck(deck, newIdx) && !newCardIds.includes(newIdx)) {
         newCardIds.push(newIdx);
         newCard = cards[newIdx - 1];
         newDeck[selectedCardIdx] = newCard;
