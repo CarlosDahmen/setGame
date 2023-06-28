@@ -7,6 +7,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
+    selected: false,
+    set: null,
   },
   {
     id: 2,
@@ -14,6 +16,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
+    selected: false,
+    set: null,
   },
   {
     id: 3,
@@ -21,6 +25,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
+    selected: false,
+    set: null,
   },
   {
     id: 4,
@@ -28,6 +34,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
+    selected: false,
+    set: null,
   },
   {
     id: 5,
@@ -35,6 +43,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
+    selected: false,
+    set: null,
   },
   {
     id: 6,
@@ -42,6 +52,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
+    selected: false,
+    set: null,
   },
   {
     id: 7,
@@ -49,6 +61,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 1,
+    selected: false,
+    set: null,
   },
   {
     id: 8,
@@ -56,6 +70,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 2,
+    selected: false,
+    set: null,
   },
   {
     id: 9,
@@ -63,6 +79,8 @@ export const cards: Card[] = [
     shape: "peanut",
     fill: "solid",
     quantity: 3,
+    selected: false,
+    set: null,
   },
   {
     id: 10,
@@ -70,6 +88,8 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 1,
+    selected: false,
+    set: null,
   },
   {
     id: 11,
@@ -77,6 +97,8 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 2,
+    selected: false,
+    set: null,
   },
   {
     id: 12,
@@ -84,5 +106,34 @@ export const cards: Card[] = [
     shape: "diamond",
     fill: "solid",
     quantity: 3,
+    selected: false,
+    set: null,
+  },
+  {
+    id: 13,
+    color: "purple",
+    shape: "diamond",
+    fill: "solid",
+    quantity: 1,
+    selected: false,
+    set: null,
+  },
+  {
+    id: 14,
+    color: "purple",
+    shape: "diamond",
+    fill: "solid",
+    quantity: 2,
+    selected: false,
+    set: null,
+  },
+  {
+    id: 15,
+    color: "purple",
+    shape: "diamond",
+    fill: "solid",
+    quantity: 3,
+    selected: false,
+    set: null,
   },
 ];

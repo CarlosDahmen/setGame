@@ -1,19 +1,15 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { initDeck, checkSet, updateDeck } from "../utils/Deck";
+import { initDeck, checkSet, updateDeck } from "../utils/utils";
 import { Card } from "../types/Card";
 
 interface IGameContext {
   deck: Card[];
-  setDeck: (deck: Card[], selectedCards: Card[]) => void;
-  selectedCards: Card[];
-  setSelectedCards: (card: Card[]) => void;
+  setDeck: (deck: Card[]) => void;
 }
 
 const initialContext = {
   deck: [],
   setDeck: () => {},
-  selectedCards: [],
-  setSelectedCards: () => {},
 };
 
 const GameContext = createContext<IGameContext>(initialContext);
@@ -31,23 +27,39 @@ export const useGameDetails = () => {
 // Context provider that returns the context that wraps the children to give them access to the state
 export const GameContextProvider = ({ children }: any) => {
   const [deck, setDeck] = useState<Card[]>(initDeck());
-  const [selectedCards, setSelectedCards] = useState<Card[]>([]);
 
   const value = {
     deck,
     setDeck,
-    selectedCards,
-    setSelectedCards,
   };
 
   useEffect(() => {
+    const selectedCards = deck.filter((card) => card.selected === true);
     if (selectedCards.length === 3) {
       if (checkSet(selectedCards)) {
-        setDeck(updateDeck(deck, selectedCards));
-        setSelectedCards([]);
+        setTimeout(() => {
+          setDeck(updateDeck(deck));
+        }, 1000);
+      } else {
+        let newDeck = [...deck];
+        newDeck.forEach((card) => {
+          card.selected = false;
+        });
+        setDeck(newDeck);
       }
+      // resetSelectedCards(deck);
     }
-  }, [selectedCards]);
+  }, [deck]);
+
+  // const resetSelectedCards = (deck: Card[]) => {
+  //   setTimeout(() => {
+  //     let newDeck = [...deck];
+  //     newDeck.forEach((card) => {
+  //       card.selected = false;
+  //     });
+  //     setDeck(newDeck);
+  //   }, 1000);
+  // };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
