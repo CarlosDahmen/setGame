@@ -49,8 +49,6 @@ export default function Gameboard() {
             <img
               className={`${styles.card} ${cardStyles(card)}`}
               src={imageUrl}
-              width={258}
-              height={167}
               alt="card"
               key={idx}
               onClick={() => selectCard(card)}

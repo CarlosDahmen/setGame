@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App {
+  justify-items: center;
+}
+
+.set-button {
+  padding: 5px;
+  border-radius: 10px;
+  width: 250px;
+  height: 150px;
+  font-size: 75px;
+  color: white;
+  margin: 5px;
+}
+
+.game-info {
+  padding: 10px;
+  justify-items: center;
+}
