@@ -3,7 +3,7 @@ import { Card } from "../types/Card";
 import findIndex from "lodash.findindex";
 import isEqual from "lodash.isequal";
 
-const randNum = () => Math.ceil(15 * Math.random());
+const randNum = () => Math.ceil(81 * Math.random());
 
 export const initDeck = () => {
   let newDeck: number[] = [];
