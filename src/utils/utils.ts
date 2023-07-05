@@ -45,15 +45,15 @@ export const checkSet = (selectedCards: Card[]) => {
   let card3 = selectedCards[2];
 
   if (
-    ((isEqual(card1.color, card2.color) && isEqual(card2.color, card3.color)) ||
+    ((isEqual(card1.color, card2.color) && isEqual(card1.color, card3.color)) ||
       (!isEqual(card1.color, card2.color) &&
         !isEqual(card2.color, card3.color) &&
         !isEqual(card1.color, card3.color))) &&
-    ((isEqual(card1.shape, card2.shape) && isEqual(card2.shape, card3.shape)) ||
+    ((isEqual(card1.shape, card2.shape) && isEqual(card1.shape, card3.shape)) ||
       (!isEqual(card1.shape, card2.shape) &&
         !isEqual(card2.shape, card3.shape) &&
         !isEqual(card1.shape, card3.shape))) &&
-    ((isEqual(card1.fill, card2.fill) && isEqual(card2.fill, card3.fill)) ||
+    ((isEqual(card1.fill, card2.fill) && isEqual(card1.fill, card3.fill)) ||
       (!isEqual(card1.fill, card2.fill) &&
         !isEqual(card2.fill, card3.fill) &&
         !isEqual(card1.fill, card3.fill))) &&
