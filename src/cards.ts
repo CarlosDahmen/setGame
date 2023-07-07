@@ -337,7 +337,7 @@ export const cards: Card[] = [
   {
     id: 38,
     color: "red",
-    shape: "peanut",
+    shape: "diamond",
     fill: "striped",
     quantity: 2,
     selected: false,
@@ -346,7 +346,7 @@ export const cards: Card[] = [
   {
     id: 39,
     color: "red",
-    shape: "peanut",
+    shape: "diamond",
     fill: "striped",
     quantity: 3,
     selected: false,
