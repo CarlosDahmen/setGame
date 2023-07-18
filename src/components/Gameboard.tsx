@@ -46,15 +46,17 @@ export default function Gameboard() {
             return "";
           };
           return (
-            <div style={{ position: "relative" }}>
-              <div className={`${styles.overlay}`} />
+            <div
+              style={{ display: "flex", position: "relative" }}
+              onClick={() => selectCard(card)}
+            >
               <img
                 className={`${styles.card} ${cardStyles(card)}`}
                 src={imageUrl}
                 alt="card"
                 key={idx}
-                onClick={() => selectCard(card)}
               />
+              <div className={`${styles.overlay}`} />
             </div>
           );
         })}

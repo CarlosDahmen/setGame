@@ -5,11 +5,15 @@ import { Card } from "../types/Card";
 interface IGameContext {
   deck: Card[];
   setDeck: (deck: Card[]) => void;
+  score: number;
+  setScore: (score: number) => void;
 }
 
 const initialContext = {
   deck: [],
   setDeck: () => {},
+  score: 0,
+  setScore: () => {},
 };
 
 const GameContext = createContext<IGameContext>(initialContext);
@@ -27,24 +31,32 @@ export const useGameDetails = () => {
 // Context provider that returns the context that wraps the children to give them access to the state
 export const GameContextProvider = ({ children }: any) => {
   const [deck, setDeck] = useState<Card[]>(initDeck());
+  const [score, setScore] = useState<number>(0);
 
   const value = {
     deck,
     setDeck,
+    score,
+    setScore,
   };
 
   useEffect(() => {
     const selectedCards = deck.filter((card) => card.selected === true);
     if (selectedCards.length === 3) {
       if (checkSet(selectedCards)) {
+        selectedCards.forEach((card) => {
+          card.set = true;
+        });
+        setScore(score + 1);
         setTimeout(() => {
           setDeck(updateDeck(deck));
-        }, 1000);
+        }, 10000);
       } else {
         let newDeck = [...deck];
         newDeck.forEach((card) => {
           card.selected = false;
         });
+        setScore(score - 1);
         setDeck(newDeck);
       }
       // resetSelectedCards(deck);
