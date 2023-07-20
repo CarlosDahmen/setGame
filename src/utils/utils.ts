@@ -1,5 +1,5 @@
 import { cards } from "../cards";
-import { Card } from "../types/Card";
+import { CardType } from "../types/CardType";
 import findIndex from "lodash.findindex";
 import isEqual from "lodash.isequal";
 
@@ -21,7 +21,7 @@ export const initDeck = () => {
   });
 };
 
-const isCardInDeck = (deck: Card[], cardId: number) => {
+const isCardInDeck = (deck: CardType[], cardId: number) => {
   return findIndex(deck, { id: cardId }) === -1 ? false : true;
 };
 
@@ -39,7 +39,7 @@ export const newCard = (existingDeck: number[]) => {
   return newCard;
 };
 
-export const checkSet = (selectedCards: Card[]) => {
+export const checkSet = (selectedCards: CardType[]) => {
   let card1 = selectedCards[0];
   let card2 = selectedCards[1];
   let card3 = selectedCards[2];
@@ -73,7 +73,7 @@ export const checkSet = (selectedCards: Card[]) => {
  * If the 3 selected cards are a set, updateDeck removes those cards
  * and adds 3 new random cards not currently in the deck
  */
-export const updateDeck = (deck: Card[]) => {
+export const updateDeck = (deck: CardType[]) => {
   const selectedCards = deck.filter((card) => card.selected === true);
 
   let newCardIds: number[] = [];

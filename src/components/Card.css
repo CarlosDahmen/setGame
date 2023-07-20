@@ -1,0 +1,30 @@
+.cardContainer {
+  position: relative;
+}
+
+.selectedCard {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: gray;
+  opacity: 0.75;
+  top: 0;
+}
+
+.isPartSet {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+}
+
+.isNotPartSet {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  background-color: red;
+  top: 0;
+}

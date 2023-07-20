@@ -1,6 +1,6 @@
-import { Card } from "./types/Card";
+import { CardType } from "./types/CardType";
 
-export const cards: Card[] = [
+export const cards: CardType[] = [
   {
     id: 1,
     color: "red",
