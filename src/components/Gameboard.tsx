@@ -1,8 +1,8 @@
 import { useGameDetails } from "../context/GameLogic";
 import { CardType } from "../types/CardType";
-import styles from "./Gameboard.module.css";
 import findIndex from "lodash.findindex";
 import Card from "./Card";
+import "./Gameboard.css";
 
 export default function Gameboard() {
   const { deck, setDeck } = useGameDetails();
@@ -27,7 +27,7 @@ export default function Gameboard() {
   };
 
   return (
-    <div className={styles.gameboard}>
+    <div className="gameboard">
       {deck.length &&
         deck.map((card, idx) => {
           const imageUrl = require(`../../public/images/cards/${card.id}.gif`);
