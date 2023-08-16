@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { initDeck, checkSet, updateDeck } from "../utils/utils";
 import { CardType } from "../types/CardType";
 
@@ -42,37 +48,46 @@ export const GameContextProvider = ({ children }: any) => {
   };
 
   // ------- Functions -------
-  const selectedCardsAreASet = (selectedCards: CardType[]) => {
-    selectedCards.forEach((card) => {
-      card.set = true;
-    });
-    setScore(score + 1);
-    setTimeout(() => {
-      setDeck(updateDeck(deck));
-    }, 1000);
-  };
-
-  const selectedCardsNotASet = (selectedCards: CardType[]) => {
-    let newDeck = [...deck];
-
-    selectedCards.forEach((card) => {
-      card.set = false;
-    });
-    setDeck(newDeck);
-  };
-
-  const resetSelectedCards = () =>
-    // Reset selected cards and update score
-    setTimeout(() => {
-      let newDeck = [...deck];
-      newDeck.forEach((card) => {
-        card.selected = false;
-        card.set = null;
+  const selectedCardsAreASet = useCallback(
+    (selectedCards: CardType[]) => {
+      selectedCards.forEach((card) => {
+        card.set = true;
       });
+      setScore(score + 1);
+      setTimeout(() => {
+        setDeck(updateDeck(deck));
+      }, 1000);
+    },
+    [deck, score]
+  );
 
-      setScore(score - 1);
+  const selectedCardsNotASet = useCallback(
+    (selectedCards: CardType[]) => {
+      let newDeck = [...deck];
+
+      selectedCards.forEach((card) => {
+        card.set = false;
+      });
       setDeck(newDeck);
-    }, 1000);
+    },
+    [deck]
+  );
+
+  const resetSelectedCards = useCallback(
+    () =>
+      // Reset selected cards and update score
+      setTimeout(() => {
+        let newDeck = [...deck];
+        newDeck.forEach((card) => {
+          card.selected = false;
+          card.set = null;
+        });
+
+        setScore(score - 1);
+        setDeck(newDeck);
+      }, 1000),
+    [deck, score]
+  );
 
   // ------- Effects -------
   useEffect(() => {
@@ -89,7 +104,7 @@ export const GameContextProvider = ({ children }: any) => {
         resetSelectedCards();
       }
     }
-  }, [deck]);
+  }, [deck, resetSelectedCards, selectedCardsAreASet, selectedCardsNotASet]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
