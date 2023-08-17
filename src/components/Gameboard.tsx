@@ -24,6 +24,12 @@ export default function Gameboard() {
       newDeck.splice(selectedCardIdx, 1, card);
       setDeck(newDeck);
     }
+    //if card is already selected, clicking on it will remove it from selectedCards
+    else if (selectedCards.length < 3 && selectedCardsIncludesCard) {
+      card.selected = false;
+      newDeck.splice(selectedCardIdx, 1, card);
+      setDeck(newDeck);
+    }
   };
 
   return (

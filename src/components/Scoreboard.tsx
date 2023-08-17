@@ -1,4 +1,5 @@
 import { useGameDetails } from "../context/GameLogic";
+import "./Scoreboard.css";
 
 interface IProps {
   name: string;
@@ -11,10 +12,10 @@ const Scoreboard: React.FunctionComponent<IProps> = ({ name }) => {
       <h2>LEADERBOARD</h2>
       <section className="scoreboard">
         <span className="player">
-          {name}
-          {score}
+          <div>{name}</div>
+          <div>{score}</div>
         </span>
-        <span className="player">Player 2</span>
+        {/* <span className="player">Player 2</span> */}
       </section>
     </div>
   );
