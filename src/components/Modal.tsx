@@ -3,15 +3,13 @@ import Landing from "./Landing";
 import "./Modal.css";
 
 interface IProps {
-  name: string;
-  onEnter: (name: string) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onEnter: (inputName: string) => void;
 }
 
-export const Modal = ({ name, onEnter, onChange }: IProps) => {
+export const Modal = ({ onEnter }: IProps) => {
   return createPortal(
     <div className="modal">
-      <Landing name={name} onEnter={onEnter} onChange={onChange} />
+      <Landing onEnter={onEnter} />
     </div>,
     document.body
   );

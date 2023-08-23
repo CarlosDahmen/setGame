@@ -12,10 +12,9 @@ const Scoreboard: React.FunctionComponent<IProps> = ({ name }) => {
       <h2>LEADERBOARD</h2>
       <section className="scoreboard">
         <span className="player">
-          <div>{name}</div>
-          <div>{score}</div>
+          <h3>{name}</h3>
+          <h3>{score}</h3>
         </span>
-        {/* <span className="player">Player 2</span> */}
       </section>
     </div>
   );

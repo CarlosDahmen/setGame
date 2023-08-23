@@ -19,12 +19,13 @@ export default function Gameboard() {
 
     let newDeck = [...deck];
 
+    //if selectedcards.length < 3 & card is not in selectedCards, add it from selectedCards
     if (selectedCards.length < 3 && !selectedCardsIncludesCard) {
       card.selected = true;
       newDeck.splice(selectedCardIdx, 1, card);
       setDeck(newDeck);
     }
-    //if card is already selected, clicking on it will remove it from selectedCards
+    //if card is already selected, remove it from selectedCards
     else if (selectedCards.length < 3 && selectedCardsIncludesCard) {
       card.selected = false;
       newDeck.splice(selectedCardIdx, 1, card);

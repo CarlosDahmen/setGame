@@ -6,11 +6,10 @@ import Scoreboard from "./components/Scoreboard";
 import { GameContextProvider } from "./context/GameLogic";
 
 function App() {
-  const [inputName, setInputName] = useState("");
   const [name, setName] = useState("");
   const [showModal, setShowModal] = useState(true);
 
-  const onEnter = () => {
+  const onEnter = (inputName) => {
     // dismiss the modal and send the name to the scoreboard
     setName(inputName);
     setShowModal(false);
@@ -19,13 +18,7 @@ function App() {
   return (
     <GameContextProvider>
       <div className="App">
-        {showModal && (
-          <Modal
-            name={inputName}
-            onChange={(e) => setInputName(e.target.value)}
-            onEnter={onEnter}
-          />
-        )}
+        {showModal && <Modal onEnter={onEnter} />}
         <Gameboard />
         <div className="game-info">
           <Scoreboard name={name} />
