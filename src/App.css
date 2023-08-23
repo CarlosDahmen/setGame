@@ -1,5 +1,4 @@
 :root {
-  width: 100%;
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
@@ -78,7 +77,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
 html,
@@ -123,6 +121,7 @@ a {
 }
 
 h2 {
+  font-size: 5vh;
   text-align: center;
   padding: 15px;
 }

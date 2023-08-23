@@ -47,46 +47,45 @@ export const GameContextProvider = ({ children }: any) => {
       card.set = true;
     });
     setScore(score + 1);
+    const newDeck = updateDeck(deck);
     setTimeout(() => {
-      setDeck(updateDeck(deck));
+      setDeck(newDeck);
     }, 1000);
   };
 
   const selectedCardsNotASet = (selectedCards: CardType[]) => {
-    let newDeck = [...deck];
+    setScore(score - 1);
 
     selectedCards.forEach((card) => {
       card.set = false;
     });
-    setDeck(newDeck);
+    // Reset selected cards
+    resetSelectedCards(selectedCards);
   };
 
-  const resetSelectedCards = () =>
-    // Reset selected cards and update score
+  const resetSelectedCards = (selectedCards: CardType[]) => {
+    // Reset selected cards as not selected and not set
     setTimeout(() => {
       let newDeck = [...deck];
-      newDeck.forEach((card) => {
+      deck.forEach((card) => {
         card.selected = false;
         card.set = null;
       });
 
-      setScore(score - 1);
       setDeck(newDeck);
     }, 1000);
+  };
 
   // ------- Effects -------
   useEffect(() => {
     const selectedCards = deck.filter((card) => card.selected === true);
     if (selectedCards.length === 3) {
       if (checkSet(selectedCards)) {
-        // Tell cards that they are a set
+        // Modify selectedCards property set to true
         selectedCardsAreASet(selectedCards);
       } else {
-        // Tell cards that they are not a set
+        // Modify selectedCards property set to false
         selectedCardsNotASet(selectedCards);
-
-        // Reset selected cards
-        resetSelectedCards();
       }
     }
   }, [deck]);

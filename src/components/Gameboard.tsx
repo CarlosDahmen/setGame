@@ -1,8 +1,8 @@
 import { useGameDetails } from "../context/GameLogic";
 import { CardType } from "../types/CardType";
-import styles from "./Gameboard.module.css";
 import findIndex from "lodash.findindex";
 import Card from "./Card";
+import "./Gameboard.css";
 
 export default function Gameboard() {
   const { deck, setDeck } = useGameDetails();
@@ -19,15 +19,22 @@ export default function Gameboard() {
 
     let newDeck = [...deck];
 
+    //if selectedcards.length < 3 & card is not in selectedCards, add it from selectedCards
     if (selectedCards.length < 3 && !selectedCardsIncludesCard) {
       card.selected = true;
+      newDeck.splice(selectedCardIdx, 1, card);
+      setDeck(newDeck);
+    }
+    //if card is already selected, remove it from selectedCards
+    else if (selectedCards.length < 3 && selectedCardsIncludesCard) {
+      card.selected = false;
       newDeck.splice(selectedCardIdx, 1, card);
       setDeck(newDeck);
     }
   };
 
   return (
-    <div className={styles.gameboard}>
+    <div className="gameboard">
       {deck.length &&
         deck.map((card, idx) => {
           const imageUrl = require(`../../public/images/cards/${card.id}.gif`);

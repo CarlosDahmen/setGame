@@ -23,7 +23,7 @@ const Card: React.FunctionComponent<IProps> = ({
 
   return (
     <div className="cardContainer" onClick={() => selectCard(card)}>
-      <img className="card" src={imageUrl} alt="card" key={idx} />
+      <img className="img" src={imageUrl} alt="card" key={idx} />
       <div className={overlayClasses} />
     </div>
   );
