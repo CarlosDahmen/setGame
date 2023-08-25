@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/setGame/static/css/main.4b9441e5.css",
-    "main.js": "/setGame/static/js/main.252d34ad.js",
+    "main.css": "/setGame/static/css/main.73520a57.css",
+    "main.js": "/setGame/static/js/main.99982522.js",
     "index.html": "/setGame/index.html",
-    "main.4b9441e5.css.map": "/setGame/static/css/main.4b9441e5.css.map",
-    "main.252d34ad.js.map": "/setGame/static/js/main.252d34ad.js.map"
+    "main.73520a57.css.map": "/setGame/static/css/main.73520a57.css.map",
+    "main.99982522.js.map": "/setGame/static/js/main.99982522.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b9441e5.css",
-    "static/js/main.252d34ad.js"
+    "static/css/main.73520a57.css",
+    "static/js/main.99982522.js"
   ]
 }
