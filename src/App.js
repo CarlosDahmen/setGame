@@ -10,8 +10,17 @@ function App() {
   const [name, setName] = useState("");
   const [showModal, setShowModal] = useState(true);
   const [showRules, setShowRules] = useState(false);
+  const [inputInlineError, setInputInlineError] = useState(false);
 
   const onEnter = (inputName) => {
+    // if the user doesn't enter a name, show inline error message
+    if (!inputName.length) {
+      setInputInlineError(true);
+      return;
+    }
+
+    setInputInlineError(false);
+
     // dismiss the modal and send the name to the scoreboard
     setName(inputName);
     setShowModal(false);
@@ -26,7 +35,11 @@ function App() {
     <GameContextProvider>
       <div className="App">
         {showModal && (
-          <Modal onEnter={onEnter} showRulesComponent={showRulesComponent} />
+          <Modal
+            onEnter={onEnter}
+            showRulesComponent={showRulesComponent}
+            inputInlineError={inputInlineError}
+          />
         )}
         <Gameboard />
         <div className="game-info">

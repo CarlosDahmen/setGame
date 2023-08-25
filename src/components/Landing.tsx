@@ -1,7 +1,17 @@
 import "./Landing.css";
 import { useState, useEffect } from "react";
 
-const Landing = ({ onEnter, showRulesComponent }: any) => {
+interface LandingProps {
+  onEnter: (inputName: string) => void;
+  showRulesComponent: () => void;
+  inputInlineError: boolean;
+}
+
+const Landing = ({
+  onEnter,
+  showRulesComponent,
+  inputInlineError,
+}: LandingProps) => {
   const [inputName, setInputName] = useState("");
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -32,15 +42,15 @@ const Landing = ({ onEnter, showRulesComponent }: any) => {
           type="text"
           value={inputName}
           id="name-input"
+          className={inputInlineError && !inputName.length ? "input-error" : ""}
           onChange={(e) => setInputName(e.target.value)}
           placeholder="Your name here"
         />
+        {inputInlineError && !inputName.length && (
+          <span className="inline-error-message">You must enter a name</span>
+        )}
       </div>
-      <button
-        disabled={inputName === ""}
-        id="enter-button"
-        onClick={() => onEnter(inputName)}
-      >
+      <button id="enter-button" onClick={() => onEnter(inputName)}>
         ENTER
       </button>
       <button id="rules-button" onClick={() => showRulesComponent()}>

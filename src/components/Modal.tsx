@@ -6,12 +6,21 @@ interface IProps {
   onEnter: (inputName: string) => void;
   showRules: boolean;
   showRulesComponent: () => void;
+  inputInlineError: boolean;
 }
 
-export const Modal = ({ onEnter, showRulesComponent }: IProps) => {
+export const Modal = ({
+  onEnter,
+  showRulesComponent,
+  inputInlineError,
+}: IProps) => {
   return createPortal(
     <div className="modal">
-      <Landing onEnter={onEnter} showRulesComponent={showRulesComponent} />
+      <Landing
+        onEnter={onEnter}
+        showRulesComponent={showRulesComponent}
+        inputInlineError={inputInlineError}
+      />
     </div>,
     document.body
   );
