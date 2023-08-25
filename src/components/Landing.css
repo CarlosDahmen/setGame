@@ -1,5 +1,5 @@
 .landing {
-  width: 500px;
+  width: 600px;
   height: 50%;
   border-radius: 5px;
   background: white;
@@ -16,4 +16,23 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+#title {
+  text-align: center;
+  align-self: center;
+}
+
+#rules-button {
+  height: 10%;
+  width: 90%;
+}
+
+#enter-button {
+  width: 50%;
+  height: 10%;
+}
+
+#name-input {
+  font-size: 3vh;
 }

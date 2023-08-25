@@ -45,20 +45,28 @@ export const checkSet = (selectedCards: CardType[]) => {
   let card3 = selectedCards[2];
 
   if (
+    //all colors are the same
     ((isEqual(card1.color, card2.color) && isEqual(card1.color, card3.color)) ||
+      //or all colors are different
       (!isEqual(card1.color, card2.color) &&
         !isEqual(card2.color, card3.color) &&
         !isEqual(card1.color, card3.color))) &&
+    //all shapes are the same
     ((isEqual(card1.shape, card2.shape) && isEqual(card1.shape, card3.shape)) ||
+      //or all shapes are different
       (!isEqual(card1.shape, card2.shape) &&
         !isEqual(card2.shape, card3.shape) &&
         !isEqual(card1.shape, card3.shape))) &&
+    //all fills are the same
     ((isEqual(card1.fill, card2.fill) && isEqual(card1.fill, card3.fill)) ||
+      //or all fills are different
       (!isEqual(card1.fill, card2.fill) &&
         !isEqual(card2.fill, card3.fill) &&
         !isEqual(card1.fill, card3.fill))) &&
+    //all quantities are the same
     ((isEqual(card1.quantity, card2.quantity) &&
       isEqual(card2.quantity, card3.quantity)) ||
+      //or all quantities are different
       (!isEqual(card1.quantity, card2.quantity) &&
         !isEqual(card2.quantity, card3.quantity) &&
         !isEqual(card1.quantity, card3.quantity)))
@@ -93,6 +101,9 @@ export const updateDeck = (deck: CardType[]) => {
       }
     }
   });
-  deck.forEach((card) => (card.selected = false));
+  deck.forEach((card) => {
+    card.selected = false;
+    card.set = null;
+  });
   return newDeck;
 };

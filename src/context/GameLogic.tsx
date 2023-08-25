@@ -47,8 +47,8 @@ export const GameContextProvider = ({ children }: any) => {
       card.set = true;
     });
     setScore(score + 1);
-    const newDeck = updateDeck(deck);
     setTimeout(() => {
+      const newDeck = updateDeck(deck);
       setDeck(newDeck);
     }, 1000);
   };
@@ -60,21 +60,28 @@ export const GameContextProvider = ({ children }: any) => {
       card.set = false;
     });
     // Reset selected cards
-    resetSelectedCards(selectedCards);
-  };
-
-  const resetSelectedCards = (selectedCards: CardType[]) => {
-    // Reset selected cards as not selected and not set
     setTimeout(() => {
       let newDeck = [...deck];
       deck.forEach((card) => {
         card.selected = false;
         card.set = null;
       });
-
       setDeck(newDeck);
     }, 1000);
   };
+
+  // const resetSelectedCards = (selectedCards: CardType[]) => {
+  //   // Reset selected cards as not selected and not set
+  //   setTimeout(() => {
+  //     let newDeck = [...deck];
+  //     deck.forEach((card) => {
+  //       card.selected = false;
+  //       card.set = null;
+  //     });
+
+  //     setDeck(newDeck);
+  //   }, 1000);
+  // };
 
   // ------- Effects -------
   useEffect(() => {
