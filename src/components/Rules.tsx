@@ -51,7 +51,7 @@ const Rules = ({ closeRulesModal }: any) => {
         Once you think you’ve found a set, click on the cards. If it is a set,
         the selected cards will turn green, a +1 will be added to your score,
         and the three cards will be replaced by new cards. If it is not a set,
-        the cards will turn red and your score will decrease be 1.
+        the cards will turn red and your score will decrease by 1.
       </h3>
       <button id="close-button" onClick={() => closeRulesModal()}>
         CLOSE

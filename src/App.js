@@ -35,7 +35,6 @@ function App() {
             <button className="show-rules-button" onClick={showRulesComponent}>
               Show Rules
             </button>
-            <button className="set-button">SET</button>
           </div>
         </div>
       </div>

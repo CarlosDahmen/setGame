@@ -9,7 +9,7 @@ const Scoreboard: React.FunctionComponent<IProps> = ({ name }) => {
 
   return (
     <div>
-      <h2>LEADERBOARD</h2>
+      <h2 id="score-title">YOUR SCORE</h2>
       <section className="scoreboard">
         <span className="player">
           <h3>{name}</h3>

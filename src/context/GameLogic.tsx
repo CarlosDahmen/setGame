@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { initDeck, checkSet, updateDeck } from "../utils/utils";
 import { CardType } from "../types/CardType";
-
 interface IGameContext {
   deck: CardType[];
   setDeck: (deck: CardType[]) => void;
@@ -70,19 +69,6 @@ export const GameContextProvider = ({ children }: any) => {
     }, 1000);
   };
 
-  // const resetSelectedCards = (selectedCards: CardType[]) => {
-  //   // Reset selected cards as not selected and not set
-  //   setTimeout(() => {
-  //     let newDeck = [...deck];
-  //     deck.forEach((card) => {
-  //       card.selected = false;
-  //       card.set = null;
-  //     });
-
-  //     setDeck(newDeck);
-  //   }, 1000);
-  // };
-
   // ------- Effects -------
   useEffect(() => {
     const selectedCards = deck.filter((card) => card.selected === true);
@@ -96,6 +82,9 @@ export const GameContextProvider = ({ children }: any) => {
       }
     }
   }, [deck]);
+
+  //if current score is higer than the lowest high score, add it to the high scores
+  useEffect(() => {}, [score]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };

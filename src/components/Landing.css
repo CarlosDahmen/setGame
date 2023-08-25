@@ -24,15 +24,38 @@
 }
 
 #rules-button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: black;
   height: 10%;
   width: 90%;
 }
 
+#rules-button:hover {
+  cursor: pointer;
+}
+
 #enter-button {
-  width: 50%;
+  width: 30%;
   height: 10%;
 }
 
+#enter-button:hover {
+  cursor: pointer;
+}
+
+.name-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
 #name-input {
-  font-size: 3vh;
+  border: solid 1px;
+  color: black;
+  padding: 0 0.5rem;
+  height: 2rem;
+  background: lightgrey;
 }
