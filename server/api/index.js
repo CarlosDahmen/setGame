@@ -2,8 +2,8 @@ import express from "express";
 
 const apiRouter = express.Router();
 
+// eslint-disable-next-line no-unused-vars
 apiRouter.get("/highscores", (req, res, next) => {
-  console.log(req.state);
   res.json(req.state.highscores);
 });
 
