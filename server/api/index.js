@@ -11,6 +11,8 @@ apiRouter.post("/highscores", (req, res) => {
   const { body } = req;
   req.state.highscores = body;
   res.json(body);
+
+  console.log(req.state.highscores);
 });
 
 export default apiRouter;

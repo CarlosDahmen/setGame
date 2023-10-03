@@ -6,7 +6,7 @@ interface IProps {
 }
 const Scoreboard: React.FunctionComponent<IProps> = ({ name }) => {
   const { score } = useGameDetails();
-  const { highscores } = useHighscores();
+  const { highscores, isHighscore } = useHighscores();
 
   return (
     <div>
@@ -34,6 +34,7 @@ const Scoreboard: React.FunctionComponent<IProps> = ({ name }) => {
               );
             })}
         </span>
+        <button onClick={() => isHighscore({ name, score })}>Send Score</button>
       </section>
     </div>
   );
