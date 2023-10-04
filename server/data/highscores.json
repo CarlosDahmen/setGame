@@ -8,5 +8,5 @@
   { "name": "G", "score": 7 },
   { "name": "H", "score": 6 },
   { "name": "I", "score": 5 },
-  { "name": "J", "score": 4 }
+  { "name": "J", "score": -1 }
 ]

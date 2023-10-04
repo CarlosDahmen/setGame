@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { initDeck, checkSet, updateDeck } from "../utils/utils";
 import { CardType } from "../types/CardType";
+import useHighscores from "../hooks/useHighscores";
 interface IGameContext {
   deck: CardType[];
   setDeck: (deck: CardType[]) => void;
@@ -15,10 +16,18 @@ const initialContext = {
   setScore: () => {},
 };
 
+let hasCountdownEnded = false;
+let userName = "";
+
 const GameContext = createContext<IGameContext>(initialContext);
 
 // Hook that returns the Context value
-export const useGameDetails = () => {
+export const useGameDetails = (countdownEnded?: boolean, name?: string) => {
+  if (countdownEnded && name) {
+    hasCountdownEnded = true;
+    userName = name;
+  }
+
   const contextValue = useContext(GameContext);
 
   if (!contextValue) {
@@ -29,6 +38,7 @@ export const useGameDetails = () => {
 
 // Context provider that returns the context that wraps the children to give them access to the state
 export const GameContextProvider = ({ children }: any) => {
+  const { isHighscore } = useHighscores();
   // ------- State -------
   const [deck, setDeck] = useState<CardType[]>(initDeck());
   const [score, setScore] = useState<number>(0);
@@ -84,7 +94,12 @@ export const GameContextProvider = ({ children }: any) => {
   }, [deck]);
 
   //if current score is higer than the lowest high score, add it to the high scores
-  useEffect(() => {}, [score]);
+  useEffect(() => {
+    if (hasCountdownEnded) {
+      console.log("score", score);
+      isHighscore({ name: userName, score });
+    }
+  }, [score, hasCountdownEnded]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };

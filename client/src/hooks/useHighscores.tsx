@@ -5,7 +5,7 @@ const useHighscores = () => {
   const [highscores, setHighscores] = useState<ScoreType[]>([]);
 
   const isHighscore = (newScore: ScoreType) => {
-    const worseScore = highscores.pop() ?? { score: 0 };
+    const worseScore = highscores[9] ?? { score: 0 };
     if (newScore.score > worseScore.score) setHighscore(newScore);
   };
 
@@ -29,7 +29,6 @@ const useHighscores = () => {
 
       console.log("NEW HIGHSCORES", highscores);
 
-      //todo: send post request with updated highscores
       await fetch("./api/highscores", {
         method: "POST",
         headers: {

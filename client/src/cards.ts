@@ -177,7 +177,7 @@ export const cards: CardType[] = [
     color: "red",
     shape: "pill",
     fill: "solid",
-    quantity: 4,
+    quantity: 2,
     selected: false,
     set: null,
   },
