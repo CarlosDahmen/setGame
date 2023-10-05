@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Gameboard from "./components/Gameboard";
-import Scoreboard from "./components/Scoreboard";
+import Gameboard from "./components/Gameboard/Gameboard";
+import Scoreboard from "./components/Scoreboard/Scoreboard";
 import { GameContextProvider } from "./context/GameLogic";
-import { Modal } from "./components/Modal";
-import Rules from "./components/Rules";
+import Rules from "./components/Rules/Rules";
 import { useGameDetails } from "./context/GameLogic";
+import { LandingModal } from "./components/LandingModal/LandingModal";
+import { EndGameModal } from "./components/EndGameModal/EndGameModal";
 
 function App() {
   const [name, setName] = useState("");
@@ -16,9 +17,9 @@ function App() {
   const [countdownEnded, setCountdownEnded] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const { score } = useGameDetails(countdownEnded, name);
+  const [showEndGameModal, setShowEndGameModal] = useState(false);
 
   useEffect(() => {
-    console.log(score);
     if (runCountdown) {
       const interval = setInterval(() => {
         if (countdown <= 0) {
@@ -31,6 +32,10 @@ function App() {
       return () => clearInterval(interval);
     }
   }, [countdown, runCountdown, score]);
+
+  useEffect(() => {
+    setShowEndGameModal(true);
+  }, [countdownEnded]);
 
   const onEnter = (inputName) => {
     // if the user doesn't enter a name, show inline error message
@@ -57,10 +62,17 @@ function App() {
     <GameContextProvider>
       <div className="App">
         {showModal && (
-          <Modal
+          <LandingModal
             onEnter={onEnter}
             showRulesComponent={showRulesComponent}
             inputInlineError={inputInlineError}
+          />
+        )}
+        {showEndGameModal && countdownEnded && (
+          <EndGameModal
+            onEnter={onEnter}
+            inputName={name}
+            showRulesComponent={showRulesComponent}
           />
         )}
         <Gameboard />
