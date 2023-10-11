@@ -1,36 +1,21 @@
 import { useGameDetails } from "../../context/GameLogic";
 import "./Scoreboard.css";
-import useHighscores from "../../hooks/useHighscores";
+import { ScoreType } from "../../types/ScoreType";
 interface IProps {
   name: string;
   timer: number;
+  highscores: ScoreType[];
 }
-const Scoreboard: React.FunctionComponent<IProps> = ({ name, timer }) => {
+const Scoreboard: React.FunctionComponent<IProps> = ({
+  name,
+  timer,
+  highscores,
+}) => {
   const { score } = useGameDetails();
-  const { highscores } = useHighscores();
-  // const [runCountdown, setRunCountdown] = useState(false);
-  // const [countdown, setCountdown] = useState(0);
-  // const { isHighscore } = useHighscores();
-
-  // useEffect(() => {
-  //   if (runCountdown) {
-  //     const interval: any = setInterval(() => {
-  //       if (countdown <= 0) {
-  //         console.log("GAME OVER");
-  //         console.log("name", name, "score", score);
-  //         isHighscore({ name, score });
-  //         return clearInterval(interval);
-  //       }
-
-  //       setCountdown(countdown - 1000);
-  //     }, 1000);
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [countdown, runCountdown]);
 
   return (
     <div>
-      <h2>TIME LEFT: {Math.floor((timer / 1000) % 60)}</h2>
+      <h2>TIME LEFT: {timer}</h2>
       <h2 id="score-title">YOUR SCORE</h2>
       <section className="scoreboard">
         <span className="player">

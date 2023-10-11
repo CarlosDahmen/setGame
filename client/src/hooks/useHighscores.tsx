@@ -6,7 +6,9 @@ const useHighscores = () => {
 
   const isHighscore = (newScore: ScoreType) => {
     const worseScore = highscores[9] ?? { score: 0 };
-    if (newScore.score > worseScore.score) setHighscore(newScore);
+    if (newScore.score > worseScore.score) {
+      return true;
+    } else return false;
   };
 
   const getHighscores = async () => {
@@ -27,8 +29,6 @@ const useHighscores = () => {
 
       highscores.sort((a, b) => (a.score < b.score ? 1 : -1));
 
-      console.log("NEW HIGHSCORES", highscores);
-
       await fetch("./api/highscores", {
         method: "POST",
         headers: {
@@ -45,7 +45,7 @@ const useHighscores = () => {
     getHighscores();
   }, []);
 
-  return { highscores, isHighscore };
+  return { highscores, isHighscore, setHighscore };
 };
 
 export default useHighscores;

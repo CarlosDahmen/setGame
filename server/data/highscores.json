@@ -4,9 +4,9 @@
   { "name": "C", "score": 20 },
   { "name": "D", "score": 10 },
   { "name": "E", "score": 9 },
-  { "name": "F", "score": 8 },
-  { "name": "G", "score": 7 },
-  { "name": "H", "score": 6 },
-  { "name": "I", "score": 5 },
+  { "name": "F", "score": 0 },
+  { "name": "G", "score": 0 },
+  { "name": "H", "score": 0 },
+  { "name": "I", "score": 0 },
   { "name": "J", "score": -1 }
 ]
