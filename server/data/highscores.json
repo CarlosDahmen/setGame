@@ -1,12 +1,12 @@
 [
-  { "name": "A", "score": 30 },
-  { "name": "D", "score": 50 },
-  { "name": "C", "score": 20 },
-  { "name": "D", "score": 10 },
-  { "name": "E", "score": 9 },
-  { "name": "F", "score": 0 },
-  { "name": "G", "score": 0 },
-  { "name": "H", "score": 0 },
-  { "name": "I", "score": 0 },
-  { "name": "J", "score": -1 }
+  { "name": "Carlos", "score": 13 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 },
+  { "name": "Carlos", "score": 0 }
 ]

@@ -1,6 +1,6 @@
 .landing {
   width: 600px;
-  height: 50%;
+  min-height: 50%;
   border-radius: 5px;
   background: white;
   border: 1px solid #ccc;
@@ -11,7 +11,7 @@
   opacity: 1;
   visibility: visible;
   color: black;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -38,7 +38,7 @@
 
 #enter-button {
   width: 30%;
-  height: 10%;
+  height: 30px;
 }
 
 #enter-button:hover {

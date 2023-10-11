@@ -34,7 +34,7 @@ const Scoreboard: React.FunctionComponent<IProps> = ({
               return (
                 <div key={i}>
                   <h3>
-                    {highscore.name} {highscore.score}
+                    {i + 1}. {highscore.name} {highscore.score}
                   </h3>
                 </div>
               );
