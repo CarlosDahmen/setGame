@@ -13,7 +13,7 @@ const useHighscores = () => {
 
   const getHighscores = async () => {
     try {
-      const res = await fetch("/api/highscores");
+      const res = await fetch("https://setserver.onrender.com/api/highscores");
       const data = await res.json();
       setHighscores(data);
     } catch (err) {
@@ -29,7 +29,7 @@ const useHighscores = () => {
 
       highscores.sort((a, b) => (a.score < b.score ? 1 : -1));
 
-      await fetch("./api/highscores", {
+      await fetch("https://setserver.onrender.com/api/highscores", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
