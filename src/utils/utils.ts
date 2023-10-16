@@ -3,41 +3,7 @@ import { CardType } from "../types/CardType";
 import findIndex from "lodash.findindex";
 import isEqual from "lodash.isequal";
 
-const randNum = () => Math.ceil(81 * Math.random());
-
-export const initDeck = () => {
-  let newDeck: number[] = [];
-
-  while (newDeck.length < 12) {
-    const newNum = randNum();
-
-    if (!newDeck.includes(newNum)) {
-      newDeck.push(newNum);
-    }
-  }
-  return newDeck.map((number) => {
-    const newCard = cards[number - 1];
-    return newCard;
-  });
-};
-
-const isCardInDeck = (deck: CardType[], cardId: number) => {
-  return findIndex(deck, { id: cardId }) === -1 ? false : true;
-};
-
-export let deck = initDeck();
-
-export const newCard = (existingDeck: number[]) => {
-  let newCard: number = 0;
-
-  while (newCard !== 0) {
-    const newNum = randNum();
-    if (!existingDeck.includes(newNum)) {
-      newCard = newNum;
-    }
-  }
-  return newCard;
-};
+export const randNum = () => Math.ceil(81 * Math.random());
 
 export const checkSet = (selectedCards: CardType[]) => {
   let card1 = selectedCards[0];
@@ -77,6 +43,54 @@ export const checkSet = (selectedCards: CardType[]) => {
   }
 };
 
+export const isThereASet = (deck: CardType[]) => {
+  for (let i = 0; i < deck.length; i++) {
+    for (let j = i + 1; j < deck.length; j++) {
+      for (let k = j + 1; k < deck.length; k++) {
+        if (checkSet([deck[i], deck[j], deck[k]])) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+};
+
+const isCardInDeck = (deck: CardType[], cardId: number) => {
+  return findIndex(deck, { id: cardId }) === -1 ? false : true;
+};
+
+export const newCard = (existingDeck: number[]) => {
+  let newCard: number = 0;
+
+  while (newCard !== 0) {
+    const newNum = randNum();
+    if (!existingDeck.includes(newNum)) {
+      newCard = newNum;
+    }
+  }
+  return newCard;
+};
+
+export const createNewDeck = () => {
+  let newDeck: number[] = [];
+
+  while (newDeck.length < 12) {
+    const newNum = randNum();
+
+    if (!newDeck.includes(newNum)) {
+      newDeck.push(newNum);
+    }
+  }
+
+  let deck = newDeck.map((number) => {
+    const newCard = cards[number - 1];
+    return newCard;
+  });
+
+  return deck;
+};
+
 /**
  * If the 3 selected cards are a set, updateDeck removes those cards
  * and adds 3 new random cards not currently in the deck
@@ -105,5 +119,6 @@ export const updateDeck = (deck: CardType[]) => {
     card.selected = false;
     card.set = null;
   });
+
   return newDeck;
 };

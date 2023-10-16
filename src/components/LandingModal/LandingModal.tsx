@@ -40,7 +40,9 @@ export const LandingModal = ({
       <div className="landing">
         <h1 id={"title"}>Welcome to the game of Set!</h1>
         <div className="name-input-wrapper">
-          <label htmlFor="name-input">Enter your name to start</label>
+          <label htmlFor="name-input">
+            Ready to Play? Enter your name to start
+          </label>
           <input
             type="text"
             value={inputName}

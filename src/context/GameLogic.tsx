@@ -1,5 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { initDeck, checkSet, updateDeck } from "../utils/utils";
+import {
+  checkSet,
+  updateDeck,
+  isThereASet,
+  createNewDeck,
+} from "../utils/utils";
 import { CardType } from "../types/CardType";
 interface IGameContext {
   deck: CardType[];
@@ -29,8 +34,18 @@ export const useGameDetails = () => {
 
 // Context provider that returns the context that wraps the children to give them access to the state
 export const GameContextProvider = ({ children }: any) => {
+  const initDeck = () => {
+    let newDeck: CardType[] = createNewDeck();
+
+    // If there is no set in the deck, reshuffle
+    if (!isThereASet(newDeck)) {
+      newDeck = createNewDeck();
+    }
+    return newDeck;
+  };
+
   // ------- State -------
-  const [deck, setDeck] = useState<CardType[]>(initDeck());
+  const [deck, setDeck] = useState<CardType[]>([]);
   const [score, setScore] = useState<number>(0);
 
   const value = {
@@ -47,7 +62,10 @@ export const GameContextProvider = ({ children }: any) => {
     });
     setScore(score + 1);
     setTimeout(() => {
-      const newDeck = updateDeck(deck);
+      let newDeck = updateDeck(deck);
+      if (!isThereASet(newDeck)) {
+        newDeck = updateDeck(deck);
+      }
       setDeck(newDeck);
     }, 1000);
   };
@@ -70,6 +88,11 @@ export const GameContextProvider = ({ children }: any) => {
   };
 
   // ------- Effects -------
+
+  useEffect(() => {
+    setDeck(initDeck());
+  }, []);
+
   useEffect(() => {
     const selectedCards = deck.filter((card) => card.selected === true);
     if (selectedCards.length === 3) {

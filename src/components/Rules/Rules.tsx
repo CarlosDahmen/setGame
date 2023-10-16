@@ -7,7 +7,7 @@ const Rules = ({ closeRulesModal }: any) => {
       <h1>Rules and How to Play</h1>
       <h3>
         The purpose of the Game is to identify SETs of 3 cards from the 12
-        unique cards shown on the board. You have 60 seconds to find as many as
+        unique cards shown on the board. You have 90 seconds to find as many as
         you can!
       </h3>
 
