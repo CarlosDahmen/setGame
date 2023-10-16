@@ -1,7 +1,11 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { randNum, checkSet, updateDeck } from "../utils/utils";
+import {
+  checkSet,
+  updateDeck,
+  isThereASet,
+  createNewDeck,
+} from "../utils/utils";
 import { CardType } from "../types/CardType";
-import { cards } from "../cards";
 interface IGameContext {
   deck: CardType[];
   setDeck: (deck: CardType[]) => void;
@@ -31,21 +35,13 @@ export const useGameDetails = () => {
 // Context provider that returns the context that wraps the children to give them access to the state
 export const GameContextProvider = ({ children }: any) => {
   const initDeck = () => {
-    let newDeck: number[] = [];
+    let newDeck: CardType[] = createNewDeck();
 
-    while (newDeck.length < 12) {
-      const newNum = randNum();
-
-      if (!newDeck.includes(newNum)) {
-        newDeck.push(newNum);
-      }
+    // If there is no set in the deck, reshuffle
+    if (!isThereASet(newDeck)) {
+      newDeck = createNewDeck();
     }
-
-    let deck = newDeck.map((number) => {
-      const newCard = cards[number - 1];
-      return newCard;
-    });
-    return deck;
+    return newDeck;
   };
 
   // ------- State -------
@@ -66,7 +62,10 @@ export const GameContextProvider = ({ children }: any) => {
     });
     setScore(score + 1);
     setTimeout(() => {
-      const newDeck = updateDeck(deck);
+      let newDeck = updateDeck(deck);
+      if (!isThereASet(newDeck)) {
+        newDeck = updateDeck(deck);
+      }
       setDeck(newDeck);
     }, 1000);
   };

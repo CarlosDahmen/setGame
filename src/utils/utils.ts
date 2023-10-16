@@ -48,7 +48,6 @@ export const isThereASet = (deck: CardType[]) => {
     for (let j = i + 1; j < deck.length; j++) {
       for (let k = j + 1; k < deck.length; k++) {
         if (checkSet([deck[i], deck[j], deck[k]])) {
-          console.log([deck[i], deck[j], deck[k]]);
           return true;
         }
       }
@@ -57,31 +56,9 @@ export const isThereASet = (deck: CardType[]) => {
   return false;
 };
 
-// export const initDeck = () => {
-//   let newDeck: number[] = [];
-
-//   while (newDeck.length < 12) {
-//     const newNum = randNum();
-
-//     if (!newDeck.includes(newNum)) {
-//       newDeck.push(newNum);
-//     }
-//   }
-
-//   let deck = newDeck.map((number) => {
-//     const newCard = cards[number - 1];
-//     return newCard;
-//   });
-
-//   console.log("initDeck", isThereASet(deck));
-//   return deck;
-// };
-
 const isCardInDeck = (deck: CardType[], cardId: number) => {
   return findIndex(deck, { id: cardId }) === -1 ? false : true;
 };
-
-// export let deck = initDeck();
 
 export const newCard = (existingDeck: number[]) => {
   let newCard: number = 0;
@@ -93,6 +70,25 @@ export const newCard = (existingDeck: number[]) => {
     }
   }
   return newCard;
+};
+
+export const createNewDeck = () => {
+  let newDeck: number[] = [];
+
+  while (newDeck.length < 12) {
+    const newNum = randNum();
+
+    if (!newDeck.includes(newNum)) {
+      newDeck.push(newNum);
+    }
+  }
+
+  let deck = newDeck.map((number) => {
+    const newCard = cards[number - 1];
+    return newCard;
+  });
+
+  return deck;
 };
 
 /**
@@ -124,6 +120,5 @@ export const updateDeck = (deck: CardType[]) => {
     card.set = null;
   });
 
-  console.log("updateDeck", isThereASet(newDeck));
   return newDeck;
 };
