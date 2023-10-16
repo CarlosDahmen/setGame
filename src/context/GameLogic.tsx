@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { initDeck, checkSet, updateDeck } from "../utils/utils";
+import { randNum, checkSet, updateDeck } from "../utils/utils";
 import { CardType } from "../types/CardType";
+import { cards } from "../cards";
 interface IGameContext {
   deck: CardType[];
   setDeck: (deck: CardType[]) => void;
@@ -29,8 +30,26 @@ export const useGameDetails = () => {
 
 // Context provider that returns the context that wraps the children to give them access to the state
 export const GameContextProvider = ({ children }: any) => {
+  const initDeck = () => {
+    let newDeck: number[] = [];
+
+    while (newDeck.length < 12) {
+      const newNum = randNum();
+
+      if (!newDeck.includes(newNum)) {
+        newDeck.push(newNum);
+      }
+    }
+
+    let deck = newDeck.map((number) => {
+      const newCard = cards[number - 1];
+      return newCard;
+    });
+    return deck;
+  };
+
   // ------- State -------
-  const [deck, setDeck] = useState<CardType[]>(initDeck());
+  const [deck, setDeck] = useState<CardType[]>([]);
   const [score, setScore] = useState<number>(0);
 
   const value = {
@@ -70,6 +89,11 @@ export const GameContextProvider = ({ children }: any) => {
   };
 
   // ------- Effects -------
+
+  useEffect(() => {
+    setDeck(initDeck());
+  }, []);
+
   useEffect(() => {
     const selectedCards = deck.filter((card) => card.selected === true);
     if (selectedCards.length === 3) {

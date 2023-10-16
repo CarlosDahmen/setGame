@@ -51,7 +51,7 @@ function App() {
     setName(inputName);
     setScore(0);
     setShowModal(false);
-    setCountdown(60);
+    setCountdown(90);
   };
 
   const showRulesComponent = () => {
